@@ -1,9 +1,15 @@
 package com.pavel.alex.lab.first.test;
 
+import com.google.common.base.Predicate;
 import com.pavel.alex.lab.first.generator.Generator;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public abstract class AbstractStatisticalTest implements  StatisticalTest {
@@ -38,12 +44,20 @@ public abstract class AbstractStatisticalTest implements  StatisticalTest {
     }
 
     @Override
-    public void test() {
-        System.out.println("--- Generator : "+generator.getName()+" ---");
-        System.out.println("--- Test : "+this.getName()+", уровень доверия: "+this.trustLevel+" ---");
-        System.out.println("statistic: "+computeStatistic());
-        System.out.println("limit value: "+limitValue(trustLevel));
-        System.out.println();
+    public void test()  {
+
+        List<String> result = new ArrayList<>();
+        result.add("--- Generator : "+generator.getName()+" ---");
+        result.add("--- Test : "+this.getName()+", уровень доверия: "+this.trustLevel+" ---");
+        result.add(" statistic : "+computeStatistic());
+        result.add("limit value: "+limitValue(trustLevel));
+        result.add("");
+        try {
+            File file = new File("results_"+trustLevel);
+            Files.write(Paths.get(file.getPath()),result, StandardOpenOption.APPEND);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

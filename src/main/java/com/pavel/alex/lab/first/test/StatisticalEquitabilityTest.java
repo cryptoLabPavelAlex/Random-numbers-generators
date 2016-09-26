@@ -10,7 +10,7 @@ import static com.pavel.alex.lab.first.additional.Utils.getByteFrequency;
 public final class StatisticalEquitabilityTest extends AbstractStatisticalTest {
 
 
-    public StatisticalEquitabilityTest(Generator generator, int sampleLength, double trustLevel) {
+    public StatisticalEquitabilityTest(Generator generator, Integer sampleLength, Double trustLevel) {
         super(generator,sampleLength,trustLevel,255);
     }
 

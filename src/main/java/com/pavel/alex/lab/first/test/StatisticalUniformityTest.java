@@ -18,6 +18,11 @@ public final class StatisticalUniformityTest extends AbstractStatisticalTest {
 
     private int m;
 
+    public StatisticalUniformityTest(Generator generator, Integer sampleLength, Double trustLevel) {
+        this(generator,sampleLength,trustLevel,100);
+    }
+
+
     public StatisticalUniformityTest(Generator generator, int sampleLength, double trustLevel,int r) {
         super(generator, sampleLength, trustLevel, 255*(r-1));
         m = data.length;
