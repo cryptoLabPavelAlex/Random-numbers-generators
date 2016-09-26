@@ -2,11 +2,13 @@ package com.pavel.alex.lab.first.generator;
 
 
 public class LehmerHigh extends AbstractLehmer {
+
     @Override
     public long generateNext() {
         curState=(a*curState+c) % m;
-        long next = curState>>55;
-        return next;
+//        System.out.println(Long.toBinaryString(curState));
+//        System.out.println(Long.toBinaryString(curState>>24));
+        return curState>>24;
     }
 
     @Override
