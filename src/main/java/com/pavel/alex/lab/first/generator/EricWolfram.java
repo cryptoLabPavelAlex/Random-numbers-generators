@@ -18,7 +18,7 @@ public class EricWolfram implements Generator {
     @Override
     public long generateNext() {
         r = Long.rotateLeft(r,1) ^ (r^Long.rotateRight(r,1));
-        return r % 2;
+        return r & 1;
     }
 
     @Override
