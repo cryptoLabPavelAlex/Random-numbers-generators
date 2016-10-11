@@ -1,12 +1,12 @@
 package com.pavel.alex.lab.first.generator;
 
-import com.pavel.alex.lab.first.NotWorked;
+
 
 import java.security.SecureRandom;
 /*
 A cryptographically strong random number minimally complies with the statistical random number generator tests specified in FIPS 140-2, Security Requirements for Cryptographic Modules, section 4.9.1. Additionally, SecureRandom must produce non-deterministic output. Therefore any seed material passed to a SecureRandom object must be unpredictable, and all SecureRandom output sequences must be cryptographically strong, as described in RFC 1750: Randomness Recommendations for Security.
 */
-@NotWorked
+
 public class SecureJavaGenerator implements Generator {
 
     private SecureRandom random;

@@ -1,9 +1,10 @@
 package com.pavel.alex.lab.first.generator;
 
+import com.pavel.alex.lab.first.Run;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+//@Run
 public class Librarian implements Generator {
 
     private final String FILENAME = "kant.txt";

@@ -1,11 +1,10 @@
 package com.pavel.alex.lab.first.generator;
 
 
-import com.pavel.alex.lab.first.NotWorked;
 
 import java.math.BigInteger;
 
-@NotWorked
+
 public class BMBytes extends BM {
 
     public BMBytes() {

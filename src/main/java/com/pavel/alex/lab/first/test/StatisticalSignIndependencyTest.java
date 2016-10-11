@@ -1,5 +1,6 @@
 package com.pavel.alex.lab.first.test;
 
+import com.pavel.alex.lab.first.Run;
 import com.pavel.alex.lab.first.generator.Generator;
 
 import java.util.DoubleSummaryStatistics;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 import static com.pavel.alex.lab.first.additional.Utils.*;
 
-
+@Run
 public final class StatisticalSignIndependencyTest extends AbstractStatisticalTest {
 
     public StatisticalSignIndependencyTest(Generator generator, Integer sampleLength, Double trustLevel) {

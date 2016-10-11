@@ -1,6 +1,8 @@
 package com.pavel.alex.lab.first.generator;
 
 
+import java.util.Random;
+
 public abstract class AbstractLehmer implements Generator {
 
     protected long curState;
@@ -15,7 +17,7 @@ public abstract class AbstractLehmer implements Generator {
         m = (long) Math.pow(2,32);
         c = 119;
         a = (long) Math.pow(2,16)+1;
-        curState=0;
+        curState=new Random().nextLong();
     }
 
     @Override

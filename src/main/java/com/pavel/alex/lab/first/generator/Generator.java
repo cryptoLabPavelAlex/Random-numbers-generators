@@ -45,6 +45,7 @@ public interface Generator {
         }
         @Override
         public long generateNext(){
+//            System.out.println(Long.toBinaryString(currentState));
             long outputBit = currentState & 1;
             long nextBit = Long.bitCount(currentState & multiplicativeMask) & 1 ;
             currentState = ( currentState >>> 1 ) | (nextBit << (registerLength - 1));

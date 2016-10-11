@@ -53,7 +53,8 @@ public abstract class AbstractStatisticalTest implements  StatisticalTest {
         result.add("limit value: "+limitValue(trustLevel));
         result.add("");
         try {
-            File file = new File("results_"+trustLevel);
+            File file = new File("results__"+trustLevel);
+            file.createNewFile();
             Files.write(Paths.get(file.getPath()),result, StandardOpenOption.APPEND);
         }catch (IOException e){
             e.printStackTrace();

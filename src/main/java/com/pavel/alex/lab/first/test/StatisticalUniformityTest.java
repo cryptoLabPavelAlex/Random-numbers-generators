@@ -1,5 +1,6 @@
 package com.pavel.alex.lab.first.test;
 
+import com.pavel.alex.lab.first.Run;
 import com.pavel.alex.lab.first.generator.Generator;
 
 
@@ -8,6 +9,7 @@ import java.util.Map;
 import static com.pavel.alex.lab.first.additional.Utils.getLineSegmentFrequencies;
 import static com.pavel.alex.lab.first.additional.Utils.getSumElem;
 
+@Run
 public final class StatisticalUniformityTest extends AbstractStatisticalTest {
 
     private int r;
@@ -19,7 +21,7 @@ public final class StatisticalUniformityTest extends AbstractStatisticalTest {
     private int m;
 
     public StatisticalUniformityTest(Generator generator, Integer sampleLength, Double trustLevel) {
-        this(generator,sampleLength,trustLevel,100);
+        this(generator,sampleLength,trustLevel,10);
     }
 
 
@@ -44,6 +46,7 @@ public final class StatisticalUniformityTest extends AbstractStatisticalTest {
                   double v1 = lineValsFrequency.get(i)[j] * lineValsFrequency.get(i)[j];
                     double v2 = elemInWholeLines.get(i) * m1;
                     res+= v1/v2;
+                    System.out.println(res);
                 }
             }
         }

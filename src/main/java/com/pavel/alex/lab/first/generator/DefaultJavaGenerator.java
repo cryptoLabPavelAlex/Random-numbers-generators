@@ -1,7 +1,9 @@
 package com.pavel.alex.lab.first.generator;
 
+import com.pavel.alex.lab.first.Run;
 import java.util.Random;
 
+//@Run
 public class DefaultJavaGenerator implements Generator {
 
     private Random random;

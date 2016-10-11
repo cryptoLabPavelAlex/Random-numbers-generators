@@ -1,6 +1,9 @@
 package com.pavel.alex.lab.first.generator;
 
 
+import com.pavel.alex.lab.first.Run;
+
+@Run
 public class LehmerLow extends AbstractLehmer {
     @Override
     public long generateNext() {

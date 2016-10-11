@@ -1,7 +1,6 @@
 package com.pavel.alex.lab.first;
 
 
-import com.pavel.alex.lab.first.generator.BMBytes;
 import com.pavel.alex.lab.first.generator.Generator;
 import com.pavel.alex.lab.first.test.StatisticalTest;
 import org.reflections.Reflections;
@@ -22,9 +21,9 @@ public class ComputeStatistic {
 
     private Set<Class<? extends StatisticalTest>> tests;
 
-    double trustLevels[] = {0.01, 0.05, 0.1};
+    private double trustLevels[];
 
-    int sampleLength = 1000000;
+    private int sampleLength;
 
     public ComputeStatistic(double[] trustLevels, int sampleLength) {
         init();
@@ -47,7 +46,7 @@ public class ComputeStatistic {
                 .filter(
                         clazz -> !Modifier.isAbstract(clazz.getModifiers()) &&
                                 clazz.getEnclosingClass() == null //check if not inner class
-                        && !clazz.isAnnotationPresent(NotWorked.class)
+                        && clazz.isAnnotationPresent(Run.class)
                 )
                 .collect(Collectors.toSet());
 
@@ -55,13 +54,12 @@ public class ComputeStatistic {
                 .stream()
                 .filter(
                         clazz -> !Modifier.isAbstract(clazz.getModifiers())
+//                                && clazz.isAnnotationPresent(Run.class)
                 )
                 .collect(Collectors.toSet());
     }
 
         public void computeResults(){
-            double trustLevels[] = {0.01, 0.05, 0.1};
-            int sampleLength = 1000000;
 
             for (int i = 0 ; i < trustLevels.length; i++){
                 int j = i;
@@ -69,9 +67,11 @@ public class ComputeStatistic {
                     try {
                         for(Class<? extends Generator> generatorClass : generators){
                             for (Class<? extends StatisticalTest> testClass : tests){
+                                Generator g = generatorClass.newInstance();
                                 StatisticalTest s = testClass
                                                 .getConstructor(Generator.class,Integer.class,Double.class)
-                                                .newInstance(generatorClass.newInstance(),sampleLength,trustLevels[j]);
+                                                .newInstance(g,sampleLength,trustLevels[j]);
+                                System.out.println("Test: "+s.getName()+", Generator: "+g.getName()+" trust level: "+trustLevels[j]);
                                 s.test();
                             }
                         }
